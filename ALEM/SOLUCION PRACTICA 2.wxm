@@ -1,0 +1,200 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+SOLUCION EJERCICIOS PRACTICA 2
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Potencias en aritemtica modular "power_moder"
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lis_orden(a,n):= makelist(power_mod(a,k,n),k,1,n-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+potencias de orden tres en Z7
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lis_orden(3,7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El orden de tres en Z7 es 6 porque 3^6 en Z7 vale 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lis_orden(5,21); lis_orden(2,13);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Un numero es primitivo cuando sus potencias dan todos los numeros de su Z
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lis_orden(6,21);lis_orden(2,9);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+6 no tiene orden en Z21 porque 6 y 21 no son primos relativos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+orden(a,n):= if elementp(1,setify(lis_orden(a,n))) then block(l:lis_orden(a,n),[i],i:1,bucle,(if(l[i]=1)then return(i)
+                                                                                                         else i:i+1,
+                                                                                                  go(bucle)))
+                                                    else print("el elemento no tiene orden en Z_n");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+orden(3,7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+PARTE 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+p: next_prime(341);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+orden(1,p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K: makelist([i,orden(i,p)],i,1,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+setify(lis_orden(2,347));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(setify(lis_orden(2,347)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+2 es primitivo en Z347
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+PARTE 3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+q:359;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Q: makelist([i,orden(i,q)],i,1,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Nos ha salido que 7 es un elemento primitivo en Z_359
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(setify(lis_orden(7,359)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r:next_prime(1024);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+showtime:true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+muestra los segundos que tarda en hacer la operacion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+R: makelist([i,orden(i,r)],i,1,100);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+showtime:false;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El primer elemento que da su orden en Z_1031 es 14 por lo que es el primitivo menor
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+PARTE 4
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+A es primitivo en Z_p si y solo si a^m != 1 para todo m divisor maximal de p-1;
+divisor maximal son los maximos divisores que dividen el numero sin llegar a ser el mismo numero
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+ifactor da la lista de primos y su factorizacion, 24= 2^3 * 3^1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ifactors(24);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+d_primos(n):= makelist(ifactors(n)[i][1],i,1,length(ifactors(n)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+d_primos(24);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+div_max(n):= makelist(n/d_primos(n)[i],i,1,length(ifactors(n)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+div_max(24);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+divisores mas grandes que tiene quitando el mismo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+primitivo(a,p):= if not(subsetp({1},setify(makelist(power_mod(a,div_max(p-1)[i],p),i,1,length(ifactors(p-1))))))
+                        then true
+                        else false;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitivo(3,7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+primitivo(3,347);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+1 es primitivo en Z_7 y 3 no lo es en Z_347
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+showtime:true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist([i,primitivo(i,1031)],i,1,200);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+showtime:false;
+/* [wxMaxima: input   end   ] */
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

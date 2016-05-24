@@ -1,0 +1,105 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+PRACTICA 3. Ejercicio 1
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion para resolver sistemas de polinomios
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+cong_pol(a,b,m):=block(d: gcdex(a,m),
+                    if remainder(b,d[3])=0
+                    then [remainder (d[1]*b/d[3],m/d[3]),m/d[3]]
+                    else "No tiene solucion"
+                    );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Y recirdando la definicion de Cong hecha en la Practiva 2 para sistemas de congruencias
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Cong(a,b,m,l):=block(k: cong( a*l[2],b-(a*l[1]),m), j: [l[1]+l[2]*k[1],l[2]*k[2]],return(j));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ejercicio 1 Se ponen en los parametro los polinomios y en el ultimo parametro se pone Cong_pol de la siguiente congruencia
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Cong_pol((x^2-2*x+2
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Dos raices simples:La raiz es simple si x menos laraiz no divide a Q(x). Por ejemplo (x-2)*(x+2)
+
+Tres raices simples: se eleva (x-n) a la multiplicidad que queremos que tenga. (x-1)^2 * (x+1)^4 * x^5
+
+Factor irreducible de grado 3 simple: Empezamos a probar con maxima hasta que nos de un polinomio irrededucible
+con la orden factor y cuando no nos de factores entonces es irreducible
+
+Dos factores irreducibles de grado 2 con multiplicidad 3: polinomio de grado 2 irreducible elevado al cubo por otro
+polinomio de grado dos irreducible elevado al cubo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+p: expand((x+2)*(x-2)*(x-1)^2*(x+1)^4*x^5*(x^3+2*x^2+x+1)*(x^2+x+1)^3*(x^2-x-1)^3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(x^3+2*x^2+1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(x^2+x+1); factor(x^2-x-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+modulus:17$ factor(x^3+3*x^2+x+7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(x^2+x+1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ factor(x^2-x-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ f: expand((x+2)*(x-2)*(x-1)^2*(x+1)^4*x^5*(x^3+3*x^2+x+7)*(x^2+x+1)^3*(x^2-x-1)^3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ factor(f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Hacer el resto de p(x)-alfa bla bla bla hay que irse al teorema del resto
+   [wxMaxima: comment end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

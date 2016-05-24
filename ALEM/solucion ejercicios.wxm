@@ -1,0 +1,105 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: comment start ]
+Ejercicio 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x: 1576;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Pr: subset(setify(makelist(i,i,1,x)),primep);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+E:{1,2,3,4,5,6,7,8,9,10};
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p(y):= is(y<x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+p(1724);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P: subset(makeset(a^b,[a,b],cartesian_product(Pr,E)),p);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Q: setdifference(P,Pr);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ejercicio 2 Numeros entre 100 y 500 que son suma de dos cuadrados
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+floor(sqrt(500)); 23^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El maximo numero cuyo cuadrado podamos tomar para la suma es 22
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+C: setify(makelist(i^2,i,1,22));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h(x):= is(100<=x)and is(x<=500);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+H es la funcion booleana que me filtra el conjunto de la suma de los cuadrados
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+h(78); h(234); h(786);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+D: subset(makeset(a+b,[a,b],cartesian_product(C,C)),h);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(D);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Solucion alternativa
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+F:setify(makelist(i,i,1,22));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+G: makeset(x^2+y^2,[x,y],cartesian_product(F,F));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+H: subset(G,h);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(H);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+comprobacion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+is(equal(D,H));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

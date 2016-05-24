@@ -1,0 +1,81 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+ARITMETICA
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+cociente
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+quotient(27,5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+resto
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+mod(37,5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Para que el resto salga positivo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+modulo(x,y):=if (y>0 or mod(x,y)=0) then mod(x,y) else mod(x,y)-y$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+MCM y MCD
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lcm(45,123);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+gcd(45,123);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Maximo comun divisor vale 3 y los dos primeros son los divisores comunes
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que resuelve congruencias
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+cong(a,b,m):= block(d:gcd(a,m),
+              if mod(b,d)=0
+              then [mod(b/d*inv_mod(a/d,m/d),m/d),m/d]
+              else "No tiene solucion"
+              );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cong(963,291,1578);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que resuelve sistemas de congruencias. La lista l es la solucion de la otra congruencia
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Cong(a,b,m,l):= block(k:cong( a*l[2],b-(a*l[1]),m), j:[l[1]+l[2]*k[1],l[2]*k[2]],return(j));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Cong(1211,2156,2247,[192,217]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Cong(1211,2156,2247,cong(675,485,1085));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

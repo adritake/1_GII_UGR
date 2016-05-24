@@ -1,0 +1,198 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIOS
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+modulus: 7$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq1: a*x+y+z=1$ eq2:x+a*y+z=b$ eq3: x+y+a*z=1$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+se hace matriz con los coeficientes y luego solve(determinant(A)=0)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+A:=coeffmatrix(eq1,eq2,eq3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Orden rango: rank(A)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+modulus: false;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u1:[1,-1,1-2]$ u2:[-2,0,0,-6]$ u:[a,1,-1,2]$ v:[1,b,0,3]$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(a1*u1+a2*u2-u,[a1,a2,a]); solve(b1*u1+b2*u2-v,[b1,b2,b]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u:[-1,1,-1,2]$ v:[1,0,0,3]$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+i:[x,y,z,t]$ A: matrix(u,v,i);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+ecuaciones parametricas
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ec1: determinant(submatrix(A,4))=0; ec2: determinant(submatrix(A,3))=0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+S:linsolve([ec1,ec2],[x,y,z,t]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+20 vectores
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(subst([%r1=1,%r2=0],S),i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(col(augcoefmatrix(subst([%r1=i,%r2=0],S),[x,y,z,t]),5),i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 4
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Tenemos que coger tres vector LI cuya primera menos segunda cordenada de 0
+Probamos tres vectores
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+s1:[1,1,0,0]$ s2:[0,0,1,0]$ s3:[0,0,0,1]$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+S:matrix(s1,s2,s3); rank(S);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+LOS 3 VECtores forman una base 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+t1:[1,1,2,1]$ t2:[2,3,-1,1]$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+T:matrix(t1,t2); rank(T);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+base de S+T juntamos el conjunto de generadores de S y T y vemos cuales son linealmente dependiente y lo quitamos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Suma: matrix(s1,s2,s3,t1,t2); rank(Suma);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C: echelon(Suma);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+El vector 5 se convierte en 0 entonces la base de S+T son los 4 primeros
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+D:submatrix(5,C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+calcular la interseccion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+La dimension de S N T= -dim(S+T) +dim(s)+dim(T)
+
+Sabemos que la dimension de S n T es 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+el primer vector de T cumple la ecuacion S por lo tanto es una base de la interseccion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuaciones cartesianas de la interseccion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+E: matrix([1,1,2,1]); v:[x1,x2,x3,x4]; F: addrow(E,v);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+quitamos columnas para formar matrices de 2*2 y hacer que su determinante valga 0
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ec1: determinant(submatrix(F,3,4))=0; ec2: determinant(submatrix(F,2,4))=0; ec3: determinant(submatrix(F,2,3))=0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s:linsolve([ec1,ec2,ec3],[x1,x2,x3,x4]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+vector de columna aumentada de ese sistema
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+col(augcoefmatrix(s,[x1,x2,x3,x4]),5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Para tomar 20 vectores
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(subst([%r5=i],s),i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(col(augcoefmatrix(subst([%r5=i],s),[x1,x2,x3,x4]),5),i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

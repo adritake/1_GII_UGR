@@ -1,0 +1,141 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+PRACTICA 6
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq1: x+2*y=3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve(eq1,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve(eq1,y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve(eq1,[x,y]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq2:x-y=2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq2:x-y=-2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq1+eq2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve([eq1,eq2],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+modulus:5$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve([eq1,eq2],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+modulus:false;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A:coefmatrix([eq1,eq2],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B:addcol(A,[3,-2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B:augcoefmatrix([eq1,eq2],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(rank(A)=rank(B));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+A*X+b ; X= -A^-1*b;
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Sol:-invert(A)*col(B,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+-invert(A)*col(B,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+col(B,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq1:x+2*y-z=3; eq2:3*x-y+z=2; eq3:-x+5*y-3*z=4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A:coefmatrix([eq1,eq2,eq3],[x,y,z]); B:augcoefmatrix([eq1,eq2,eq3],[x,y,z]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rank(A); rank(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Es un sistema compatible determinado
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+determinant(submatrix(3,A,3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A:coefmatrix([eq1,eq2],[x,y]); B: augcoefmatrix([eq1,eq2],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Sol:rat(-invert(A)col(B,3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+No se por que ....ones me da error
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve([eq1,eq2,eq3],[x,y,z]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq1:3*x+4*y-z=4; eq2:-4*x-y+2*z=-2; eq3:2*x+b*y-6*z=1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A:coefmatrix([eq1,eq2,eq3],[x,y,z]); B:addcol(A,[4,-2,1]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Cuando la matriz tiene determinante 0
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(determinant(A)=0,b);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

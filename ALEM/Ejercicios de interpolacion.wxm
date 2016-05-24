@@ -1,0 +1,87 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+Ejercicio 3º
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+cong_pol(a,b,m):=block(d: gcdex(a,m),
+                    if remainder(b,d[3])=0
+                    then [remainder (d[1]*b/d[3],m/d[3]),m/d[3]]
+                    else "No tiene solucion"
+                    );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Cong_pol(a,b,m,l):=block(k: cong( a*l[2],b-(a*l[1]),m), j: [l[1]+l[2]*k[1],l[2]*k[2]],return(j));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+modulus: 37;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+S:Cong_pol(1,2,x-0,
+            Cong_pol(1,4,x-2,
+                    Cong_pol(1,6,x-3
+                        Cong_pol(1,27,x-5,
+                                Cong_pol(1,10,x-7,
+                                        Cong_pol(1,15,x-8,cong_pol(1,10,x-10)))))));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Polinomio de interpolacion de Lagrange
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load(interpol);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s:[[0,2],[2,4],[3,6],[5,27],[7,10],[8,15],[10,10]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lg: lagrange(s);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+polymod(lg);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+:000  Es el polinomio de antes que no me ha salido porque me da erroooor :))))
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Grafica bonica del polinomio
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+plot2d([[discrete,s],lg],[x,0,10],[y,0,45],[style,points,lines],[legend,puntos,interpolacion],
+        [xlabel,abscisas],[ylabel,ordenadas]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Encontrar un polinomio cuya derivada vale una serie de ordenadas
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Para que la derivada tome ese valor tenemos que dividir por (x-alfa)^2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+p1: diff(p0,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Hay que hacer el mismo royo de antes pero con (x-elnumero)^2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Al final sale que no existe
+   [wxMaxima: comment end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

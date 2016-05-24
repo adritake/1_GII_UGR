@@ -1,0 +1,178 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: title   start ]
+COMBINACIONES
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(7,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(10,7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ makelist(binomial(10,k),k,0,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(n,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ sum(binomial(n,k),k,0,n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ sum(binomial(n,k),k,0,n), simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ sum(binomial(n,2*k),k,0,n), simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ sum(binomial(n,2*k+1),k,0,n), simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El numero de subconjuntos de cardinal par e impar son iguales
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Numero de r-combinaciones en un conjunto X ( lambda es una funcion pura,que no tiene nombre.Sirve para definir una funcion
+y luego la llama. De otra manera habria que hacer f:=x^2 y luego f(3)  )
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lambda([x],x^2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lambda([x],x^2)(3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Toma lo subconjunto de tamaño r de un conjunto x
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ combi(X,r):=subset(powerset(X),lambda([A],is(cardinality(A)=r)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ejemplos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+combi({1,2,3,4,5},2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+combi({pepe,antonio,luis,pedro,juan},3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(5,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(combi({pepe,antonio,luis,pedro,juan},3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ combi({a,b,c,d,e},1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ combi({a,b,c,d,e},2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ is(cardinality(combi({a,b,c,d,e},2))=binomial(5,2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ combi({a,b,c,d,e},0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+SOLUCION AL EJERCICIO
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+L: solve(binomial(n,4)=2258956742190,n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+PERMUTACIONES
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Permutaciones de elementos de un conjunto ordenadas lexicográficamente
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ permutations({a,b});
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ permutations({a,b,c});
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ permutations({a,b,c,d});
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Permutaciones de una lista ordenadas lexicográficamente
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ permutations([a,b,c,d]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Permutaciones de la palabra releer
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ permutations([R,E,L,E,E,R]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ cardinality(permutations([R,E,L,E,E,R]));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comando multinomial, El 3,2,1 son las letras que se repiten
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ multinomial_coeff(3, 2, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+A: multinomial_coeff(76,5,42);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,187 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: comment start ]
+Ejercicio 20
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+X: setify(makelist(i,i,1,10));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P: set(2,3,5,7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(A,B):= is (equal(setdifference(A,P),setdifference(B,P)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P_X: powerset(X)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Coc_P_X: equiv_classes(P_X,f)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(P_X);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(Coc_P_X);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+lista del cociente de partes de x
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+LCPX: listify(Coc_P_X)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+todas las clases tienen 16 porque parte de P tiene 2^4
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+CLX: makelist(cardinality(LCPX[i]),i,1,64);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(CLX[i],i,1,64);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO22
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+HAy que ver el mayor numero que puede dar la suma de sus elementos y el menor (10 y -10) y ver si se dan todos los elementos de la suma
+Por lo que en el conjunto cociente hay 21 elementos (21 clases) |P(x)/R|=21
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+X: setify(makelist(i,i,-4,4));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sigma(A):= sum(listify(A)[i],i,1,lenght(listify(A)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+ejemplo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+A:set (-3,-2,0,4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sigma(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(A,B):=is(iqual(sigma(A),sigma(B)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B: set(-4,3,2,-2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(A,B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+hazme el cociente
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Co: equiv_classes(powerset(X),f)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(Co);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 24
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g(x,y):= is(mod(x^2-y^2,9)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Como no podemos estudiar todo Z pues estudiamos desde -90 hasta 90
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Z_90: setify(makelist(i,i,-90,90))$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+equiv_classes(Z_90,g);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Coc_Z_90:equiv_classes(Z_90,g);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(Coc_Z_90);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 21
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+X: setify(makelist(i,i,-3,3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(a,b):= abs(a)+abs(b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g(c,d):= abs(c)+abs(d);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+U(f,g):= is(equal(g(c,d),f(a,b)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+equiv_classes(Z_10,U(f,g));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Coc_U: equiv_classes(Z_10,U(f,g));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(Coc_U);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+HAy que hacer el conjunto potencia del conjunto cartesiano
+   [wxMaxima: comment end   ] */
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

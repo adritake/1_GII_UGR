@@ -1,0 +1,73 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+2.2
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+529-76-5-42;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+esa es la variable fantasma
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+multinomial_coeff(406,76,5,42)*(-1)^76*(2^5)*((-3)^42);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+expand((1-x)^5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+si queremos calcular el coeficiente de x^3 tengo que buscar el exponente de la variable fantasma que seria 2 (5-3)
+Entonces calculamos el binomial(5,3) que es igual a multinomial_coeff(3,2)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(5,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+multinomial_coeff(3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(5,3)*(-1)^3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+2.3
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Es como sacar 200 bolas de una bolsa en la que hay 4 bolas diferentes x,y,z,t. Para ello consideramos tres separadores y colocamos cada uno cuando cambia la etiqueta
+de la bola. Se trata, por tanto, de Combinaciones con repetición de 200+4-1, en donde las repeticinoes son los 3 separadores, es decir:
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Cuantas secuencias distintas podemos tener. Usamos las combinaciones con repeticion
+Hay 203 simbolos porque hay 3 separadores.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(203,3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+De manera simple
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+expand((x+y+z)^4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+binomial(6,2);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
