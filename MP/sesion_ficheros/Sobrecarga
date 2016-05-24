@@ -1,0 +1,21 @@
+ostream& operator<<(ostream& osObject, const className& cObject){
+
+	//local declaration, if any
+	//Output the member of cObject
+	//osObject<<. . . 
+	
+	//Return the stream object
+	
+	return osObject;
+}
+
+istream& operator >> (istream isObject, className& cObject){
+
+	//local declaration, if any
+	//Read the data into cObject
+	//isObject>> . . .
+
+	//Return the stream object
+
+	return isObject;
+}
