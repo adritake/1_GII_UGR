@@ -1,0 +1,173 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: input   start ] */
+load("graphs");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+1) Yo lo tengo bien en el otro archivo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+g(x,y):= is (mod(x+y,7)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+2)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x,y):=is(abs(x-y)=4) or is (abs(x-y)=5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+grafo_B:make_graph(makelist(i,i,0,100),f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C:connected_components(grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+a)es conexo?
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is_connected(grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+b)numero cromatico
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+chromatic_number(grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(grafo_B,vertex_coloring=true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+c)Tiene un camino de euler?
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+degree_sequence(grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El 4 es uno de los candidatos para ser el inicio o el final del camino euleriano
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+vertex_degree(4,grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+vertex_degree(96,grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist([i,vertex_degree(i,grafo_B)],i,0,100);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Dado que el grafo solo tiene dos vertices de grado impar entonces tiene un camino de eulere que parte
+del 4 y llega al 96 o al reves
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+d)Longitud menor de un ciclo
+    Es 4
+Se hace con la funcion girth(grafo) y odd_girth es el ciclo menor impar
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+girth(grafo_B); odd_girth(grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+e) es bipartido, si fuera bipartido el numero cromatico seria 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+is_bipartite(grafo_B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+3)  AJEDREZ
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+caballo(x,y):= (is(mod(x,m)=0) and (is(y-x=m+2) or is(y-x=2*m+1)))or
+               (is(mod(x,m)=m-1)and(is(y-x=m-2) or is(y-x=2*m-1)))or
+               (is(mod(x,m)=1)and(is(y-x=m+2) or is(y-x=2*m+1)or is(y-x=2*m-1)))or
+               (is(mod(x,m)=m-2)and(is(y-x=m-2) or is(y-x=2*m-1)or is(y-x=2*m+1)))or
+               ((is(2<=mod(x,m))and is(mod(x,m)<=m-3))and(is(y-x=m+2)or is(y-x=2*m+1)or
+                is(y-x=2*m-1)or is(y-x=m-2)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m:8; n:8;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+caballo(1,18);caballo(2,11);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Para un tablero de 4x4
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+m:4;n:4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+grafo_caballo_gen: make_graph(makelist(i,i,0,m*n-1),caballo);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(grafo_caballo_gen,show_id=true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ciclo hamiltoniano
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+HC: hamilton_cycle(grafo_caballo_gen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Con 4x4 no tiene ciclo hamiltoniano
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+m:6;n:6;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+grafo_caballo_gen: make_graph(makelist(i,i,0,m*n-1),caballo);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(grafo_caballo_gen,show_id=true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+HC: hamilton_cycle(grafo_caballo_gen);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Con un tablero de 6x6 si tiene un ciclo hamiltoniano
+   [wxMaxima: comment end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

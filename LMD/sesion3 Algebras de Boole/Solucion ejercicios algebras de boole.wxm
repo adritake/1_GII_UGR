@@ -1,0 +1,323 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: comment start ]
+SOLUCION EJERCICIOS ALGEBRAS DE BOOLE
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+a. Sea  X={1,2,3,4,5,6,7}, e  Y = X x X x X. Consideramos en X el orden lexicográfico. Dadas las
+siguientes parejas x,y de elementos de Y, determina quien es mayor, y encuentra el conjunto de 
+todos los elementos de Y comprendidos entre x e y.
+
+    x = (4,2,1), y = (5,6,2)
+    x = (1,4,7), y = (7,4,1)
+    x = (6,4,5), y = (2,4,1)
+
+b). Consideramos ahora el orden producto en Y. Repite el ejercicio anterior para las siguientes 
+parejas de elementos:
+
+    x = (4,2,1), y = (5,6,2)
+    x = (1,4,7), y = (7,4,1)
+    x = (1,4,7), y = (7,4,7)
+    x = (6,4,5), y = (2,4,1)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+X:{1,2,3,4,5,6,7};
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Y: cartesian_product(X,X,X);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(cardinality(Y)=7^3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+La funcion ordenlessp da true si el primero va antes del segundo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+f(z) elige el numero del medio de cada conjunto
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+f(z):= orderlessp(x,z) and orderlessp(z,y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+orderlessp(a,b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+orderlessp(alto,aereo);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+La e de aereo va antes que la l de alto
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+orderlessp(aereo,alto);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x:[4,2,1]; y:[5,6,2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+orderlessp(x,y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Z:subset(Y,f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(Z);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Parte b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion booleana que dice si estan ordenadas segun el producto cartesiano
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ordenPC(li1,li2):= (orderlessp(li1[1],li2[1]) or li1[1]=li2[1]) and (orderlessp(li1[2],li2[2]) or
+                    li1[2]=li2[2]) and (orderlessp(li1[3],li2[3]) or li1[3]=li2[3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+4 es menor que 5 pero 2 no es menor que 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ordenPC([4,2,1],[5,1,2]); orderlessp([4,2,1],[5,1,2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fPC(z):=ordenPC(x,z) and ordenPC(z,y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ZPC: subset(Y,fPC);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(ZPC); cardinality(Z);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+x; y;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+funcion que me da el numero de elementos con el orden PC entre li1 y li2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+num(li1,li2):= (li2[1]+1-li1[1])*(li2[2]+1-li1[2])*(li2[3]+1-li1[3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+num(x,y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Calcula todos los números n <= 1000 tales que el conjunto de los divisores de n es un conjunto
+totalmente ordenado, y también calcula aquellos tales que los divisores de n es un álgebra de 
+Boole.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ot(n):= if length(ifactors(n))=1 then true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ifactors(256);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ifators1(1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ot(256); ot(81); ot(258);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+OT_1000: subset(setify(makelist(n,n,1,1000)),ot);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+quitamos cadenas que sus divisores es un primo y 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+primos_1000: subset(setify(makelist(n,n,1,1000)),primep);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+lista de primos de forma p^k
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+J: setdifference(OT_1000,primos_1000);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Parte b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Es un algebra de bool si los ifactors son primos pero no pueden estar elevados a mas de 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+q(l):=l[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+funcion que comprueba si todos los exponentes son 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ab(n):= if setify(makelist(q(ifactors(n)[i]),i,1,length(ifactors(n)))) = {1} then true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ifactors(30); ifactors(210); ifactors(175);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ab(30); ab(210); ab(175);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobamos las algebras de bool entre 0 y 1000 y quitamos los primos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+AB_1000: subset(setify(makelist(ab(n),n,1,1000)),primep);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+PROBLEMA 3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+a). Si notamos como D(n) el retículo de los divisores de n, y hacemos que n <= 100000, entonces 
+¿Cuántos y cuáles de ellos son órdenes totales con 5 elementos?
+
+b). Para D(n), si hacemos  n <= 500, entonces 
+¿Cuántos y cuáles de ellos son Álgebras de Boole con 16 elementos?
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Parte a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+p(l):=l[1]; q(l):=l[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Esta funcion da true si un primo esta elevado a 4 de sus ifactors
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ot5(x):= is(length(ifactors(x))=1) and is(q(p(ifactors(x)))=4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+2^4; ifactors(16);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q(p(ifactors(2^4)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ot5(4); ot5(16);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A:subset(setify(makelist(n,n,1,100000)),ot5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+17^4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Siete numeros entre 1 y 100000 son ordenes totales con cinco elementos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Parte b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ab(n):= if setify(makelist(q(ifactors(n)[i]),i,1,length(ifactors(n)))) = {1} then true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+AB: subset(setify(makelist(i,i,2,500)),ab);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x):= is(length(ifactors(x))=4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ifactors(210); f(210); ifactors(70); f(70);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B: subset(setify(makelist(i,i,2,500)),f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ifactors(420);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+420 no es algebra de boole
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que filtra los elementos que no son algebras de boole 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+ab4(x):=ab(x) and f(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ab4(210); ab4(420);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C: subset(setify(makelist(i,i,2,500)),ab4);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,127 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load("graphs");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A: makelist(i,i,0,30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g(x,y):= is (mod(x^3-y^3,8)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C:make_graph(A,g);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mod(7,5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mod(63,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+D:connected_components(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C1:induced_subgraph(D[1],C);C2:induced_subgraph(D[2],C);C3:induced_subgraph(D[3],C);C4:induced_subgraph(D[4],C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(C1);
+draw_graph(C2);
+draw_graph(C3);
+draw_graph(C4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+HC: hamilton_cycle(C1);
+HC: hamilton_cycle(C2);
+HC: hamilton_cycle(C3);
+HC: hamilton_cycle(C4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+degree_sequence(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Cat(n):= binomial(2*n,n) * (1/(n+1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(Cat(i),i,0,100);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Cn+1=C0 Cn+ C1 Cn-1+ C2 Cn-2++ Cn-2 C2+ Cn-1 C1+ Cn C0
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C[n]:= if n=0 then 1 else if n = 1 then 1 else if n = 2 then 2 else C[0]*C[n-1] + C[1]*C[n-2] + C[2]*C[n-3] + C[n-3]*C[2] + C[n-2]*C[1] + C[n-1]*C[0];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C[5];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit (Cat(x)/Cat(x-1), x, inf);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+227508830794229349661819540395688853956041682601541047340*4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+910035323176917398647278161582755415824166730406164189360-896519947090131496687170070074100632420837521538745909320;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Cat(1000)/Cat(999),numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Significa que 4 es la solucion de la ecuacion caracteristica
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load("logic.lisp");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1: r nor p nor (p and q);
+f2: r and (not p);
+f3: r implies (p nand q);
+f4: not p;
+f5: (not r) nor (p and q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv(not f1 and f2 and f3 and f4 and f5,false);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

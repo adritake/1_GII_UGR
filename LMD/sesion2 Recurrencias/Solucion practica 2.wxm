@@ -1,0 +1,88 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+TORRES DE HANOI
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+a)Encontrar definicion recurrente.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load(solve_rec);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve_rec( t[n]=2*t[n-1]+1, t[n], t[1]=1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+T(n):= 2^n-1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+b) calcular el numero de movimientos con 64 fichas y el tiempo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+T(64);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+seg_anio: 60*60*24*365;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+T(64)/seg_anio,numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+BUBBLE SORT
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+a) Obtener relacion de recurrencia
+
+    b(n)=b(n-1) + (n-1)
+    b(0)=0
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+b) Obtener la funcion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+solve_rec( b[n]=b[n-1]+(n-1), b[n],b[1]=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b(n):=(n-1)*n/2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bubble[n]:= if n>1 then bubble[n-1]+(n-1) else 0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+c) Calcular algunos terminos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(bubble[n],n,1,100);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+d)Calcular el limite
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(b(n)/b(n-1),n,inf,minus);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El limite es uno porque 1 es la raiz de la ecuacion caracteristica
+   [wxMaxima: comment end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

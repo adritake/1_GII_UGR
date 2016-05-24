@@ -1,0 +1,373 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+PRACTICA 3
+
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+divisors(2014);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(12);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(2014);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+2*19*53;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que devuelve si una funcion es booleana
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+El "*" significa que multiplicas todos los elementos de una lista entre si
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(n):=block(
+    [lisf,i,long], 
+    lisf:ifactors(n),
+    long:length(lisf),
+    if is(apply("*",makelist(lisf[i][2],i,1,long))=1)then true else false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(12);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(2014);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(2017);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Conjunto que contiene todos los numero cuya funcion divisor es un algebra de boole
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+X: setify(makelist(i,i,2,50));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Y:subset(X,esAB);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(listify(Y));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Diagrama de Hasse
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load(graphs);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(cube_graph(1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(cube_graph(2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(cube_graph(3));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que dice si dos diagramas son isomorfos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+iso(m,n):= is(length(ifactors(m)) = length(ifactors(n)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+iso(51,155);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(51);factor(155);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+iso(10,16278240338897);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(10);factor(16278240338897);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+iso(210,3565271);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+factor(210);factor(3565271);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que devuelve los atomos de un algebra de boole
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(d):= block(
+    [lis,long],
+    lis:ifactors(d),
+    long:length(lis),
+    setify(makelist(lis[i][1],i,1,long)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(892392217);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Calcular elementos de un algebra de bool con la funcion atomos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(210);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobamos si 70 pertenece a los divisores de 210
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+elementp(70,divisors(210));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+atomos de 70
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(70);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Usamos el comando lcm(minimo comun multiplo) sobre los atomos de 70 para comprobar cual es el supremo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lcm(listify(atomos(70)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que devuelve los coatomos de un AB
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+coatomos(n):=block(
+    [la],
+    la:listify(atomos(n)),
+    setify(makelist(quotient(n,la[k]),k,1,length(la))));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+coatomos(30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+coatomos(210);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que devuelve los coatomos con los que se puede obtener un numero d
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+coatomos(d,n):=block(
+    [lis,long],
+    lis:ifactors(quotient(n,d)),
+    long:length(lis),
+    setify(makelist(quotient(n,lis[i][1]),i,1,long)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+coatomos(2,30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Es decir 6 OR 10 = 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+A:setify(makelist(i,i,100,400));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Z: subset( A,esAB);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+noAB: setdifference(A,Z);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobamos si es un algebra de boole
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(1741209542339);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobamos que 1399667 pertenece a ese algebra
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+elementp(1399667,divisors(1741209542339));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Atomos de este algebra
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+atom:atomos(1741209542339);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Descomposicion de 1399667
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+des:ifactors(1399667);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Filtro el primer valor de las parejas de numeros
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+des_c: setify(makelist(des[i][1],i,1,length(des)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Compruebo si el conjunto de la descomposicion de 1399667 esta dentro de los atomos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+is(des_c = intersection(des_c,atom));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 4
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: hide output   ] */
+/* [wxMaxima: input   start ] */
+M: makelist(i,i,10^5,10^5+500);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ifactors(210);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prim_5(n):= block(
+    [factores],
+    factores: makelist(ifactors(n)[i][1],i,length(ifactors(n))),
+    if is(length(factores)=5) then true else false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prim_5(210);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+2*3*5*7*11;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+prim_5(2310);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cumplen:setify(makelist(if prim_5(n) then n,n,M));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+P:listify(setdifference(cumplen,{false}));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+menor: P[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 7
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load("C:/Users/ADRIAN/Downloads/andrejv-discrete.mac-bcaeb1c/Species.mac")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("C:/Users/ADRIAN/Downloads/andrejv-discrete.mac-bcaeb1c/logic_ops.mac")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("C:/Users/ADRIAN/Downloads/andrejv-discrete.mac-bcaeb1c/logic.mac")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("C:/Users/ADRIAN/Downloads/andrejv-discrete.mac-bcaeb1c/discrete.mac")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load(logic_ops);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load(logic);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load(boolmin);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+boolean_minimize((x and y) or (not x and y) or (x and not y));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

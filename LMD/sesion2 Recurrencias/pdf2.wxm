@@ -1,0 +1,48 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+load(functs);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fib(6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ejercicio1: La sucesion viene dada por la recurrencia Tn= 2*T(n-1)+T(n-2).
+Su funcion es:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Recurrencia(n):= block(
+
+    [aux,a0,a1],
+
+    a0:1,
+    a1:2,
+    
+    if n=0 then aux:0
+    else if n=1 then aux:a0
+    else if n=2 then aux:a1
+    
+    
+    else if n>=3 then
+
+        for i:3 thru n do(
+            aux:a0 +2*a1,
+            a0:a1,
+            a1:aux
+        ),aux);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Recurrencia(3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(Recurrencia(i),i,1,7);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

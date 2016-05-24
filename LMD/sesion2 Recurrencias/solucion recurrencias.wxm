@@ -1,0 +1,133 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: comment start ]
+Fibonacci
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo(n):= if n=1 then 1 else if n=2 then 1 else fibo(n-1)+fibo(n-2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+showtime:true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo(10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo(20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo(30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo[n]:= if n=1 then 1 else if n=2 then 1 else fibo[n-1]+fibo[n-2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo[10];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo[20];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo[30];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo[100];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo[101];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+fibo[1000];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(fibo[100+k*100],k,1,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+showtime:false;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+b) solucion de la recurrencia
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load(solve_rec);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve_rec(a[k]=a[k-1]+a[k-2],a[k],a[1]=1,a[2]=1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+c)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(x^2-x-1,x),numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a(k):=(sqrt(5)+1)^k/(sqrt(5)*2^k)-((sqrt(5)-1)^k*(-1)^k)/(sqrt(5)*2^k)
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+%phi,numer; (sqrt(5)+1)/2,numer; -1/%phi,numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+define(a(k),(sqrt(5)+1)^k/(sqrt(5)*2^k)-((sqrt(5)-1)^k*(-1)^k)/(sqrt(5)*2^k));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+numer: on;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist((a(k+1)/a(k)),k,1,100);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(a(k+1)/a(k),k,100,500,100);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Otra sucesion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+solve_rec(a[n]=2*a[n-1]+3*a[n-2],a[n],a[0]=1,a[1]=7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+d(n):= 2*3^n-(-1)^n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+numer:off;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+limit(d(n)/d(n+1),n,inf);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

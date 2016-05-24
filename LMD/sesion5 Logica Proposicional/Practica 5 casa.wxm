@@ -1,0 +1,210 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: input   start ] */
+load("logic.lisp");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+characteristic_vector(true,P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+characteristic_vector(P implies(Q implies P));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv(P implies Q,not P or Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv(P implies(Q implies P),true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv(P and not P, false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ejemplo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv(not(P and not Q and R)implies(R implies(P implies Q)),true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv((P or Q)implies(P and Q),true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv((P or Q)implies(P and Q),false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ejercicio
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv((P implies(Q and R))and(Q implies S) and(P and T) and (not S),false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv((P implies(Q and R))and(Q implies S) and(P and T) and (not(not T and R)),false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv((P implies(Q and R))and(Q implies S) and(P and T) and (not(not S implies(not P or T))),false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Polinomio de Zhegalkin
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+zhegalkin_form(not P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+zhegalkin_form(P implies Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+zhegalkin_form(P implies(not Q implies R));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+zhegalkin_form(true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+zhegalkin_form(P and Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+zhegalkin_form(P xor Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Forma booleana
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+boolean_form(P implies Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+boolean_form(P eq Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+boolean_form(false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Leyes de De Morgan
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+demorgan(not(P or Q));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+demorgan(P eq Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Expresiones mas simples
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_simp( not not not P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_simp( P or (Q or false or(P or Q)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Forma normal conjuntiva y distuntiva
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+pcnf(not P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+pdnf(not P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+pcnf(P and Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+pdnf(P and Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Conjunto de operadores logicos funcionalmente completos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+functionally_complete(P and Q,P or Q, not P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ejercicio:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+functionally_complete(P and Q,P xor Q, true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+functionally_complete(P and Q, P xor Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+functionally_complete(P and Q,true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+functionally_complete(P xor Q,true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_basis(P and Q,P xor Q, true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIOS
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_basis(not Q, P implies Q);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+2
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+logic_equiv(P implies Q,not Q implies not P);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+4
+   [wxMaxima: comment end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

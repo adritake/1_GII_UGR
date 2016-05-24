@@ -1,0 +1,225 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+Solucion ejercicios induccion
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+n!<2^n
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+suc_a:makelist(is(n!-2^n >=0),n,1,30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist([n,is(40^n<factorial(n))],n,100,200);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+demostra HI
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+assume(n!-2^n >=0); assume(n>3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(n!>=2^n);is(n<-2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is((n+1)*n! >= (n+1)*2^n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is((n+1)*2^n >= 2^(n+1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Esto no lo entiende
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+is((n+1)! =(n+1)*n!);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+la orden factcomb simplifica la expresion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+is((n+1)! =factcomb((n+1)*n!));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is((n+1)! = factcomb((n+1)*n!)) and is((n+1)*n!>=(n+1)*2^n) and is ((n+1)*2^n >= 2^(n+1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+PARA los otros casos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(is( n^2+6*n+8>=0),n,0,30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist([n,is((n^3)>256*(n^2))],n,1,300);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+SIn demostracion no hay induccion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+p(x):= x^2+x+41;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+suc_b: makelist([n,primep(p(n))],n,1,100);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+funciones que sacan el primero y el segundo de la lista
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+f(m):= m[1]; g(m):=m[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g([1,2,3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A:setify(makelist( if( g(suc_b[n])=false ) then f(suc_b[n]) , n,1,100));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+B:{false};
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Sol:setdifference(A,B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Otra forma
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+valores: subset(setify(suc_b),g);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality (valores);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+listab: makelist(if is(g(suc_b[n])=false) then f(suc_b[n])else true,n,1,length(suc_b));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+setdifference(setify(listab),{true});
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Otra forma
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+block([n], n:1, label, if not(primep(n^2+n+41)) then return(n) else n:n+1, go(label));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El primer n que no es primo es 40
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ultima aproximacion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+h(x):= not(g(x));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+valores: subset(setify(suc_b),h);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+la orden map aplica la funcion f aplica la funcion a cada uno de los elementos de la lista
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+setify(map(f,listify(valores)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+Primos de Mersenne
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+lista_mersenne: [2,3,5,7,13,17,19,31,67,127,257];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+La orden makelist se le puede pasar una lista de la que la variable va tomando sus valores
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist([n,primep(2^n-1)],n,lista_mersenne);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+La afirmacion de mersenne falla en dos numeros 67 y 257
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+set_display('ascii);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lista_Nomerssene:listify(setdifference(setify(makelist(i,i,1,1000)),setify(lista_mersenne)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lista: listify(setdifference(setify(makelist(if primep(2^n-1) then n,n,lista_Nomerssene)),{false}));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Otra forma
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+com_lista: listify(setdifference(setify(makelist(i,i,1,700)),setify(lista_mersenne)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lista2:makelist([n,primep(2^n-1)],n,com_lista);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lambda([x],primep(2^f(x)-1))([2,true]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+map(f,listify(subset(setify(lista2),lambda([x],primep(2^f(x)-1)))));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Lo mismo pero con bloque de programacion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+La funcione endcons añade un numero al final de una lista
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+l: block(l:[], for i:1 thru 257 do(if primep(2^i-1) then l:endcons(i,l)),l);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

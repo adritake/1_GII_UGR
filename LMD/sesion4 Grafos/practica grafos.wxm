@@ -1,0 +1,109 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: comment start ]
+Crear K(3,2) de tres formas
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Con create_graph
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load(graphs);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K32A:create_graph([1,2,3,4,5],[[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(K32A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Con from adjacency matrix
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+A: matrix([0,0,0,1,1],[0,0,0,1,1],[0,0,0,1,1],[1,1,1,0,0],[1,1,1,0,0]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K32B: from_adjacency_matrix(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(K32B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is_isomorphic(K32A,K32B);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+K32C:complete_bipartite_graph(3,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(K32C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(is_isomorphic(K32A,K32B) and is_isomorphic(K32A,K32C));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+PROBLEMA: 36 puntos en un plano numerados de 0 hasta 35 que estan unidos si la suma de su etiquetas es
+multiplo de 7
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+A:makelist(i,i,0,35);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+mod(10,5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x,y):= is(mod(x+y,7)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(18,2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C:make_graph(A,f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+D: connected_components(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+D[1];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C1:induced_subgraph(D[1],C);C2:induced_subgraph(D[2],C);C3:induced_subgraph(D[3],C);C4:induced_subgraph(D[4],C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(C1);
+draw_graph(C2);
+draw_graph(C3);
+draw_graph(C4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+hamilton_cycle(C1);hamilton_cycle(C2);hamilton_cycle(C3);hamilton_cycle(C4);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

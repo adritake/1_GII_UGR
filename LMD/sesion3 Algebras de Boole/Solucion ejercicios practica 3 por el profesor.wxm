@@ -1,0 +1,320 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+CORRECCION EJERCICIOS PRACTICA 3
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(n):=block(
+    [lisf,i,long], 
+    lisf:ifactors(n),
+    long:length(lisf),
+    if is(apply("*",makelist(lisf[i][2],i,1,long))=1)then true else false);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ifactors(60);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(60);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+X: setify(makelist(i,i,100,400));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Y: subset(X,esAB);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(Y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Hay 182 algebras de boole entre 100 y 400
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Vamos a ver cuantas algebras de boole hay distintas(no isomorfas) es decir que tienen distinto numero
+de atomos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Algebra con un atomo
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+primep(101);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Algebra con dos atomos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+11*13;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Algebra con tres atomos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+5*7*11;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Algebra con cuatro atomos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+2*3*5*7;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+¿Hay con cinco primos?
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+2*3*5*7*11;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+No hay porque 2310 no esta en la lista de algebras de boole
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Solo hay cuatro tipos distintos de algebras de boole(no isomorfas)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Z: setdifference(X,Y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(Z);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Otra manera: Hacemos la funcion complementaria a esAB(n)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+noesAB(n):= not(esAB(n));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+no_Y: subset(X,noesAB);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(no_Y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is(equal(Z,no_Y));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(1741209542339);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+D: divisors(1741209542339);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(D);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ifactors(1741209542339);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+elementp(1399667,divisors(1741209542339));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(d):= block(
+    [lis,long],
+    lis:ifactors(d),
+    long:length(lis),
+    setify(makelist(lis[i][1],i,1,long)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(1741209542339);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(1399667);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+103*107*127;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 4
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+V: setify(makelist(i,i,10^5,10^5+500))$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(n):= if esAB(n) and cardinality(atomos(n))=5 then true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+W: subset(V,f);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+atomos(100110);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+esAB(100110);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 5
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Por ejemplo el minterm 14 en binario con 7 bits es 0001110 y lo ponemos en expresion booleana
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Lo primero que hay que hacer es convertir cada numero en binario y luego pasar la cadena a expresion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ponemos base 2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+obase: 2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Lista de minterns
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lista:[0,2,14,15,42,43,44,45,90,91,94,100,101,111,103,123,124,127];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Longitud de 14 en binario pero con el resultado en binario 4=100(base 2)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+slength(string(14));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Esta funcion pasa un numero binario a una lista con los numero separados
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+L(x):= makelist((mod(x,2^i) - mod(x,2^(i-1)))/2^(i-1),i,1,slength(string(x)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+L(14);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+li: makelist(L(lista[i]),i,1,length(lista));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+obase:10;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Funcion que covierte los unos y ceros en x1,x2.... negado o sin negar
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+conv(l):= apply("and",makelist(if k<= length(l) and l[k]=1 then x[8-k] else not x[8-k],k,1,7));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+conv(li[3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Lista con todos los minterms convertidos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+li2: makelist(conv(li[i]),i,1,length(li));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Los juntamos todos con un "or"
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+funcion: apply("or",li2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Load logic_ops y logic y boolmin(cambiar tipo de archivo)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load("U:/2ºcuatrimestre/LMD/sesion3/andrejv-discrete.mac-bcaeb1c/logic_ops.mac")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("U:/2ºcuatrimestre/LMD/sesion3/andrejv-discrete.mac-bcaeb1c/logic.mac")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("U:/2ºcuatrimestre/LMD/sesion3/andrejv-discrete.mac-bcaeb1c/boolmin.lisp")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+boolean_minimize(funcion);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

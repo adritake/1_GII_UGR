@@ -1,0 +1,201 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.7 ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIO 2
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load("U:/2ºcuatrimestre/LMD/andrejv-discrete.mac-bcaeb1c/logic.lisp")$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f1: b eq(not a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f2: d eq ((not a) and (not c));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f3: e eq ((not d)or c);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f4: a eq ((not e)or c);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q1: characteristic_vector(f1,a,b,c,d,e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q2: characteristic_vector(f2,a,b,c,d,e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q3: characteristic_vector(f3,a,b,c,d,e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+q4: characteristic_vector(f4,a,b,c,d,e);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Q:makelist(q1[i] and q2[i] and q3[i] and q4[i],i,length(q1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Es cierta en solo un caso pero vamos a ver los valores de las variables atomicas
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+obase: 2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+15;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Q2: makelist([i-1,Q[i]],i,length(Q));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Solucion:
+
+El true sale 10101 eso significa que es verdad A,C,E y mienten B y D
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIO 3
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+g1: characteristic_vector((not A and not C and not D) implies not B,A,B,C,D,E);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g2: characteristic_vector(C or (A eq B),A,B,C,D,E);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g3:characteristic_vector((C or not A)implies (D and (not B) and (not(C or (A eq B)))),A,B,C,D,E);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g4:characteristic_vector(A implies((not B) implies C),A,B,C,D,E);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g5:characteristic_vector(((A and not E) or (not A and E)),A,B,C,D,E);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+R: makelist(g1[i] and g2 [i] and g3[i] and g4[i] and g5[i],i,1,length(g2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+R2: makelist([i-1,R[i]],i,length(R));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Solucion:
+
+    Hay dos soluciones:
+        1.- A,B son verdaderas y el resto falsas
+        2.- A,B,D son verdaderas y el resto falsas
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+De otra manera mas elegante 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Val_true(x):= makelist(if x[i]=true then {i-1} else {},i,1,length(x));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Val_true(R);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+soluciones: apply(union,Val_true(R));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIO 4
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Solucion:
+
+Cada objeto puede ser de 3 colores, pero no necesitamos especificar 9 atomos
+(3 colores x 3 objetos), sino 6, ya que el tercer color lo podemos escribir como la negacion de los 
+otros dos, Asi denotamos:
+
+Ab= A es blanco, Ar=A es rojo, Bb= B es blanco... etc
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+h1: (Bb or Br) and (not Cb);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h4: Ar or not h1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h2: Cr and h4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h3: (not Ab and not Ar) or Br;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+h5:Ab or(not Bb and not Br);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r1: characteristic_vector(h1, Ab,Ar,Bb,Br,Cb,Cr);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r2: characteristic_vector(h2, Ab,Ar,Bb,Br,Cb,Cr);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r3: characteristic_vector(h3, Ab,Ar,Bb,Br,Cb,Cr);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r4: characteristic_vector(h4, Ab,Ar,Bb,Br,Cb,Cr);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r5: characteristic_vector(h5, Ab,Ar,Bb,Br,Cb,Cr);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Para porder tratar con esto hay que traducir los valores de verdad en 0 y 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+b(x):= makelist( if x[i] = true then 1 else 0,i,length(x));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+busc: apply(union,makelist( if apply("+",[b(r1)[i],b(r2)[i],b(r3)[i],b(r4)[i],b(r5)[i]])=1 then {i-1} else {},i,1,length(r1)));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+No se porque me salen varios valores, se supone que el bueno es el ultimo
+   [wxMaxima: comment end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

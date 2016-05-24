@@ -1,0 +1,11 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: comment start ]
+Calcular el producto cartesiano de una algebra de bool con tres atomos con otra con tres atomos
+
+¿Es algebra de boole? ¿cuantos atomos tiene?
+   [wxMaxima: comment end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,217 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+SESION 1 Induccion
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Como se demuestra una induccion con maxima:
+
+1º Se demuestra los primeros terminos con makelist
+
+2º Demostrar la induccion con Maxima encadenando razonamientos con el comando "assume"
+    
+    Ej: assume(n>0) funcion booleana
+    
+    Se convina la funcion assume con razonamientos logico-matematicos
+
+3º Otra forma de dar el paso general es con argucias logicas
+    
+    Ej:   a:7^(n-1)=multiplo de 6;  b:7^(n+1)-1=multiplo de 6
+            
+           
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(i,i,1,n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(i,i,1,n), simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(i,i,1,n),simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(i^2,i,1,n),simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(i^3,i,1,n),simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(2*i-1,i,1,n),simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(1/2^i,i,1,n),simpsum;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Cuando no funciona simpsum
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load(simplify\_sum);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sum(1/((2*i-1)*(2*i+1)),i,1,n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+simplify_sum(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+DEMOSTRACION DE INDUCCIONES
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+1º Demostramos los primeros terminos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+A:makelist((7^n-1)/6,n,1,30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Son todos numeros enteros por lo que es cierto para esos primeros terminos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ahora temos que demostrar que 7^n-1 y 7^(n+1)-1 son multiplos de 6 por lo que los restamos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+7^n-1 - (7^(n+1)-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+No da la informacion pero simplificamos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+rat(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Es multiplo de 6 porque aparece el factor 6
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+La diferencia de dos cosas es multiplo de 6 y una de las cosas es multiplo de 6 entonces la otra es multiplo de 6
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+SEGUNDO EJERCICIO
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ahora lo comprobamos para n+1 con el metodo anterior
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+B: makelist((7^(2*n)+16*n-1)/64,n,1,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Vamos a calcular otra vez la diferencia entre los terminos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+(7^(2*(n+1))+16*(n+1)-1) - (7^(2*n)+16*n-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+simplificacion despues de dividir por 64
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+rat(% /64);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Para que el resultado de esta fraccion al dividir entre 64 sea entero tenemos que comprobar otra vez
+por induccion que esta fraccion es multiplo de 4 para cada n. Volvemos a restar dos terminos consecutivos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+3*7^(2*(n+1))-3*7^(2*n);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rat(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+144/4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Como 144 es multiplo de 4 tenemos demostrada la induccion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Aqui tenemos que dividir la expresion
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+divide(a^2-b^2,a+b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El primer termino es el cociente y el segundo es el resto, como el resto es cero el termino era divisible
+por a+b
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIOS
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+1º 
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([x!,2^x], [x,0,5],[y,0,20]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(is(n!>=2^n),n,1,100);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+A partir de n=4 se cumple esto entonces n0=4
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+n0:4;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobamos para n+1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+assume(n!>=2^n); assume(n>=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is((n+1)!>=(2^(n+1)));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

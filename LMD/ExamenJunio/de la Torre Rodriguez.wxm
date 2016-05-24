@@ -1,0 +1,198 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.7 ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIO 1
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("graphs");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A: makelist( if primep(i) then i,i,7,250);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A: setify(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A: setdifference(A,{false});
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+cardinality(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+A:listify(A);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+g(x,y):= is( mod(x,10) = mod(y,10));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C:make_graph(A,g);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+D:connected_components(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Conex: cardinality(setify(D));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+D:listify(D);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+C1:induced_subgraph(D[1],C);C2:induced_subgraph(D[2],C);C3:induced_subgraph(D[3],C);C4:induced_subgraph(D[4],C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw_graph(C1);
+draw_graph(C2);
+draw_graph(C3);
+draw_graph(C4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+HC: hamilton_cycle(C1);
+HC: hamilton_cycle(C2);
+HC: hamilton_cycle(C3);
+HC: hamilton_cycle(C4);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is_isomorphic(C1,complete_graph(13));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is_isomorphic(C2,complete_graph(13));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is_isomorphic(C3,complete_graph(12));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is_isomorphic(C4,complete_graph(12));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Tiene 4 componentes conexas y todos tienen ciclos hamiltonianos y además C1 y C2 son grafos completos
+de 13 vertices y C3 y C4 completos de 12 vertices.
+
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+c)Las componentes conexas son los vertices cuya etiqueta tiene la misma clase de equivalencia
+de mod(X,10).
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+d)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+degree_sequence(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIO 2
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+load("solve_rec");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Rec[n]:= 6*Rec[n-1] - 11 * Rec[n-2] + 6 * Rec[n-3] + 2*n + 3^n
+
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuacion caracteristica de la parte  homgenea
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x^3 - 6*x^2 + 11 * x - 6;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuacion caracteristica de la parte no homgenea
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+(x-2)*(x-1)^3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Polinomio caracteristico
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+P:(x^3 - 6*x^2 + 11 * x - 6)*(x-2)*(x-1)^3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Raices de la ecuacion caracteristica
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(P,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+multiplicities;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El 1 es de multiplicidad 4, el 2 es de multiplicidad 2 y el 3 es de multiplicidad 1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Termino general
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+TN: c1*4^n + c2*n*4^n + c3*n^2*4 + c4*n^3*4 + c5*n5*4
+
+
+
+
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Parte con solve_rec
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Rec[n]:= 6*Rec[n-1] - 11 * Rec[n-2] + 6 * Rec[n-3] + 2*n + 3^n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve_rec( Rec[n]= 6*Rec[n-1] - 11 * Rec[n-2] + 6 * Rec[n-3] + 2*n + 3^n, Rec[n], Rec[0]=0,
+Rec[1]=1,Rec[2]=2);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

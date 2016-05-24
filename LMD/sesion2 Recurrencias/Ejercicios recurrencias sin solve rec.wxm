@@ -1,0 +1,82 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: comment start ]
+RESOLVER RECURRENCIAS SIN SOLVE_REC
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+xn = 3x(n-1) - 2x(n-2) + 2^n + 2*n;  n>=2
+
+x0=0
+x1=1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+PASOS:
+
+1º) Calcular la ecuacion caracteristica,las raices(Maxima) y multiplicidad(multiplicities)
+2º) Escribir la recurrencia memoizada y calcular con ella los terminos necesarios
+3º) Escribir el termino general de la recurrencia en funcion de las raices de la multiplicidad
+4º) Para obtener las constantes resolver el sistema de ecuaciones con maxima
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuacion caracteristica de la parte homogenea
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x^2-3*x+2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Parte no homogenea
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+(x-2)*(x-1)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Polinomio caracteristico
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+carac: (x^2-3*x+2)*(x-2)*(x-1)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Raices de la ecuacion caracteristica
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(carac,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+multiplicities;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Termino general
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+c1*n*3
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rec[n]:= 
+    if n=0 then 0
+    else if n=1 then 1 else
+    
+    3*rec[n-1] - 2*rec[n-2] + 2^n + 2*n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+rec[4];
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

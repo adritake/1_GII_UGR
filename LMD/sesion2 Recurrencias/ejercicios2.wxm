@@ -1,0 +1,270 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: title   start ]
+Sucesión de Fibonacci.
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+La sucesión de Fibonacci esta dada por la recurrencia:
+
+   fib(n) = fib(n-1)+fib(n-2);  fib(0)=0, fib(1)=1,
+
+que produce la sucesión:  {0,1,1,2,3,5,8,13,21,34, ...)
+
+a). Define una función para obtener los términos de la sucesión, primero en forma explícita y 
+luego en forma recurrente (con la técnica de Memoización) y comprueba la diferente eficiencia 
+al calcular, por ejemplo el valor de f(30).
+
+b). Obtén la solución de esta recurrencia.
+
+c). Comprueba que la sucesión de cocientes de dos elementos consecutivos de la sucesión de 
+fibonacci tiende al número de oro, Phi.
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Fib_exp(n):=block(
+
+    [aux,a0,a1],
+
+    a0:0,
+    a1:1,
+    
+    if n=1 then aux:a0
+    else if n=2 then aux:a1
+    
+    else if n>=3 then
+
+        for i:3 thru n do(
+            aux: a0+a1,
+            a0:a1,
+            a1:aux
+        ),aux);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Fib_memo[n]:= block(
+
+    [a0:0,a1:1,aux],
+
+    if n=1 then aux:a0
+    else if n=2 then aux:a1
+
+    else if n>=3 then aux: Fib_memo[n-1] + Fib_memo[n-2], aux);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(Fib_exp(i),i,1,30);
+makelist(Fib_memo[i],i,1,30);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuacion caracteristica de la recurrencia
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+carac: x^2-x-1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Se resuelve
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+raices: solve(carac,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+r1:(1-sqrt(5))/2; r2:(1+sqrt(5))/2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Formula general
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+general(n):= c1*r1^n + c2*r2^n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Resolvemos la general
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+general(0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+general(1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve([general(0)=0,general(1)=0],[c1,c2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+c)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+fi:(1+sqrt(5))/2,numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(Fib_exp(i)/Fib_exp(i-1),i,3,50),numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+Torres de Hanoi
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Para el problema de las "Torres de Hanoi",
+
+a). Encontrar una definición recurrente que exprese el número de movimientos mínimo a realizar 
+para n torres.
+
+b). Calcular este número en el caso clásico que inspira el juego: el de 64 torres. Si cada torre 
+puede moverse en 1 sg, ¿Cuanto se tardará en mover las 64 torres con las reglas dadas?
+
+NOTA: Ver el juego en  
+http://www.uterra.com/juegos/torre_hanoi.htm
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+a) La recurrencia de este juego es:  Tn=2*T(n-1)+1
+
+Para calcular el numero minimo de movimientos resolvemos esta recurrencia
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Es una RLNH b=1;  p(n)=1;
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Ecuacion caracteristica
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Ec_carac: (x-2)*(x-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+raiz: solve(Ec_carac,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Termino general
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Term_gen(n):= c1*2^n + c2*1^n;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Term_gen(0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Term_gen(1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+topolysolve([Term_gen(0),Term_gen(1)],[c1,c2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c1:1; c2:-1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Ec_gen(n):=2^n-1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Ec_gen(5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Segundos:Ec_gen(64);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+Complejidad de Bubble sort
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Si tenemos n números reales, a1,a2,…,an, que queremos ordenar de manera ascendente, podemos 
+utilizar para ello el algoritmo "Bubble Sort": comparamos a1 con a2, si es menor se deja tal cual,
+y si a1>a2 entonces se intercambian estos valores en la lista. Luego se repite el procedimiento 
+con a2 y después de n-1 comparaciones, el número más grande de la lista está al final. Se repite 
+el proceso para los n-1 restantes hasta conseguir ordenar la lista completa.
+
+a). Obtener una relación de recurrencia para el procedimiento descrito.
+
+b). Obtener una función compacta que exprese la solución a la recurrencia anterior.
+
+c). Calcular algunos términos mediante la anterior función y también mediante una definición de 
+    la función directamente con técnicas recursivas (memoización).
+
+d). Considerar la sucesión de términos b(n)/b(n-1), donde b(n) es la función que expresa la 
+    complejidad del algoritmo considerado en datos de tamaño n. ¿Tiende (computacionalmente) 
+    esta sucesión hacia algún valor? ¿Tiene alguna interpretación matemática este valor?.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+a) La relacion de recurrencia es la siguiente: T(n)=T(n-1)+(n-1)  El numero de comparaciones es le numero de comparaciones anterior
+    más (n-1) veces de la actual
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+b) Es una RLNH de grado 1 y se puede expresar asi: T(n)-T(n-1)=(n-1) b=1 p(n)=n Entonces su ecuacion caracteristica es:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Carac: (x-1)*(x-1)^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Termino general:
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Gen(n):= c1+c2*n+c3*n^2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+Gen(0); Gen(1); Gen(2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+linsolve([Gen(0),Gen(1),Gen(2)],[c1,c2,c3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c1:0; c2:1; c3:3;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
