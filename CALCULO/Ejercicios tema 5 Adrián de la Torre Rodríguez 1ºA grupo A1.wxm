@@ -1,0 +1,73 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIO 5.4
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+5.4 a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+En cada repeticion va sumando el numero siguiente hasta sumar el 450
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+suma:0$
+for i:400 thru 450 do suma:suma+i$
+print(suma)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+5.4 b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Desde 1 hasta 1000 va sumando el siguiente numero y dividiendo por 2 para asi ir haciendo la media poco a poco
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+media:0$
+for i:1 thru 1000 do media:(media+i^2)/2$
+print(media),numer$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIO 5.6
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Cada vez multiplica un numero mas grande y "a" aumenta 1. El producto elevado a (1/n) significa que hara la raiz n-ésima de ese producto
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+media:0$
+producto:1$
+a:1$
+while media<20 do(
+                    producto:producto*a,
+                    media:(producto)^(1/a),
+                    a:a+1)$
+print("El primer numero natural cuya media geometrica es mayor que 20 es ", a ,
+" y su media geometrica es ", media),numer$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: title   start ]
+PRIMER EJERCICIO DEL FICHERO DE MAXIMA
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Cada vez va imprimiendo el logaritmo de un numero 0.5 mayor. Lo inicializo en 0.5 porque el logaritmo de 0 no existe.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x:0.5$
+while log(x)<2 do(
+                    print("Para x=",x," su logaritmo vale: ",log(x)),
+                    x:x+0.5)$
+                    print("Para x=",x," su logaritmo es mayor que 2")$
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

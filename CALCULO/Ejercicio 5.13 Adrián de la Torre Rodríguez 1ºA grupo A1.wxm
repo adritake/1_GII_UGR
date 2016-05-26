@@ -1,0 +1,113 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 14.09.0 ] */
+
+/* [wxMaxima: title   start ]
+EJERCICIO 5.13
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Ponemos la opción numer en true
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+numer:true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Gráfico de la función para orientarnos
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([x^2-5], [x,-5,5])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Función que calcula la solución a una ecuación por el método de la secante
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+secante(expr,var,inicio,fin,tol):=
+block(
+
+/* Declaración de las variables*/
+[a,b,c,t],
+
+/*Asignación de unas variables a otras para que sea más fácil su escritura*/
+a:inicio,
+b:fin,
+t:tol,
+
+/*Creamos la funcion f(x) a partir de la expresión(expr)que le hemos pasado a la función*/
+define(f(x),subst(x,var,expr)),
+
+/*Comprobamos el teorema de bolzano, si no hay cambio de signo entre sus imagenes entonces no hay solución*/
+if f(a)*f(b) > 0 then error("No hay solucion entre esos puntos"),
+
+/*En lugar de establecer los pasos, establezco la precision y con un bucle while lo repito hasta que la solución sea menor que la precisión*/
+while abs(f(a))>t do(
+    c:(a*f(b)-b*f(a))/(f(b)-f(a)),
+    if abs(f(c))<t then return(c),
+    if f(a)*f(c)< 0 then b:c else a:c)
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobamos que las soluciones de la ecuacion son más y menos la raíz de cinco
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+numer:false;
+print("Solucion a la ecuacion: ",solve(x^2-5,x));
+numer:true;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+sqrt(5);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Comprobamos las dos soluciones de la ecuación probando en dos tramos y vemos que se acercan a la raiz de 5
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+secante(x^2-5,x,-4,0,10^-6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+secante(x^2-5,x,0,4,10^-6);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Vemos que si aumentamos la precisión, la solución se acerca más a la raíz de 5
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+secante(x^2-5,x,0,4,10^-7);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+secante(x^2-5,x,0,4,10^-9);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+secante(x^2-5,x,0,4,10^-10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+secante(x^2-5,x,0,4,10^-15);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Con precisión de 10^-15 el resultado es igual a la raíz de 5
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Por último comprobamos el caso de que no haya solución entre los dos puntos dados
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+secante(x^2-5,x,0,1,10^-6);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

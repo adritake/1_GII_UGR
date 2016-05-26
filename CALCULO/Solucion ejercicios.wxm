@@ -1,0 +1,90 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: comment start ]
+Ejercicio 2.7
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+m=7/(-5-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+s(x):= -7/6*(x-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+m=(14-2)/(5-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+t(x):=2+3*(x-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u(x):= if x<1 then s(x) else t(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([u(x)], [x,-5,5],[y,0,14])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+c)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([sin(%pi*x)], [x,-5,5]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+d)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+h(x):= (x+2)*(x)*(x-1)*(x-2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(h(x), [x,-3,3]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+f)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+j(x):= (x+1)*(x-1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+abs(j(x));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(abs(j(x)), [x,-2,2]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+e)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([1/(x^2-1)], [x,-2,2], [y,-25,25])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([1/(x^2-1)+1], [x,-2,2], [y,-25,25])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+with_slider(n,makelist(k,k,-20,20),
+n*x^2, [x,-10,10], [y,-10,10]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,133 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: title   start ]
+FUNCIONES HIPERBÓLICAS
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+coseno hiperbolico (e^x + e^-x)/2
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([cosh(x)], [x,-5,5])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+cosh^2-senh^2=1
+derivada de cosh es senh
+la derivada de senh es cosh
+tgh =senh/cosh
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: title   start ]
+GRAFICOS CON DRAW
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d([log(x),x^2],[x,-5,5])$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+cargamos el paquete draw
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+load(draw);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+orden draw podemos hacer varias graficas y cada una con sus propiedades
+Se pueden dibujar graficas de funciones, lugar geometrico de los puntos que cumplen una ecuacion,puntos, elipses, rectangulos.....
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(color=dark_pink,
+         explicit(cos(2*x),x,0,4*%pi));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+     color=green,
+     explicit(log(x),x,0,5),
+     color=blue, 
+     explicit(x^2,x,-3,3)  
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+     color=green,
+     line_width=3,
+     explicit(log(x),x,0,5),
+     color=blue, 
+     explicit(x^2,x,-3,3)  
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+        line_width=3,
+        color=red,
+        explicit(x+1,x,-2.5,2.5),
+        color=dark-green,
+        implicit(x^2+(y-1)^2=4,x,-2,2,y,-1,3)
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    explicit(cos(x),x,0,2*%pi),
+    explicit(sin(x),x,0,2*%pi),
+    implicit(x^2+y^2=1,x,-1,1,y,-1,1),
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+        explicit(x^2,x,-3,3),
+        implicit(x^2-y^2=1,x,-3,3,y,-3,3),
+        xrange=[-3,3]
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Puntos "points(lista de puntos)"
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    point_size=2,
+    point_type=filled_circle,
+    points([[0,1],[1,3]]),
+    xrange[-3,6],
+    yrange[-3,5],
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+10 puntos del plano al azar
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+lista:makelist([random(20)],[random(50)],k,1,10);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+debugmode(true);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+load(draw);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+? ellipse;
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,14 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 4.1
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+solve([y=x^2,y=2*x^2+a*x+b], [x,y]);
+/* [wxMaxima: input   end   ] */
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

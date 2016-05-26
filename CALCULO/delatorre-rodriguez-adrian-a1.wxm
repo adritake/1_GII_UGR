@@ -1,0 +1,100 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 0.8.4 ] */
+
+/* [wxMaxima: title   start ]
+EXAMEN PRACTICAS CALCULO
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 1 a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+       color=red,
+       explicit(x-arctan(x^2-3*x+1),x,-3,3),
+       color=blue,
+       explicit(log(x^2+1),x,-3,3),
+       yrange=[-5,5]
+
+       );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+Para hayar su punto de corte
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+find_root(x-arctan(x^2-3*x+1)-log(x^2+1),x,0,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 2a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+x1:3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 20 do(
+     x1:sqrt(x1)+5)$
+print("Este es el limite: ")$
+x1,numer;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3 a)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+       color=red,
+       explicit(12*x^2-12*x^3,x,-5,5),
+       color=dark-green,
+       explicit(2*x^2-2*x,x,-5,5)
+       );
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(12*x^2-12*x^3-2*x^2+2*x,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+seccion1:integrate(12*x^2-12*x^3-2*x^2+2*x, x, -(1/6), 0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+seccion2:integrate(12*x^2-12*x^3-2*x^2+2*x, x, 0, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+El area que hay entre las dos graficas es
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+Area:seccion1+seccion2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+EJERCICIO 3b)
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Usamos esta formula: longitud:integrate(sqrt(1+df(x)^2),x,a,b);
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+df:diff(12*x^2-12*x^3,x,1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+longitud:quad_qags(sqrt(1+df^2), x, 0, 1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+longitud:longitud[1];
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,42 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: comment start ]
+Curva explicita e implicita
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(color=dark-pink,
+         explicit(cos(2*x),x,0,4*%pi));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: comment start ]
+implicit tienes que delimitar las dos variables
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(color=dark-pink,
+         implicit(y-cos(2*x)=0,x,0,4*%pi,y,-2,2));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(color=black,
+implicit(x^2+y^2=1,x,-1,1,y,-1,1));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(color=red,
+line_width=4,
+implicit(x^2-y^2=1,x,-4,4,y,-4,4));
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(explicit(2/x,x,-1,1),yrange=[-5,5]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(implicit((x-1)^2+(y-2)^2=2,x,-1,4,y,0,4));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
