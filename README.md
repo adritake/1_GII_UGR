@@ -7,16 +7,16 @@ Este contenido es para ayudarte con tus prácticas, nunca para copiarlas. No me 
 
 **Aclaraciones**
 
-- **ALEM**: Algunos apuntes y ejercicios de Maxima del profesor Álvaro Martínez Sevilla
+- **ALEM**: Algunos apuntes y ejercicios de Maxima. Profesor Álvaro Martínez Sevilla.
 
-- **CALCULO**: Ejercicios y apuntes de Maxima de la profesora Pilar Muñoz Rivas
+- **CALCULO**: Ejercicios y apuntes de Maxima. Profesora Pilar Muñoz Rivas.
 
-- **FP**: Sesiones de prácticas en c++ del profesor Juan Carlos Cubero Talavera
+- **FP**: Sesiones de prácticas en c++. Profesor Juan Carlos Cubero Talavera.
 
-- **FS**: Algunos ejercicios de las autoevaluaciones del profesor Miguel Vega López. He perdido las autoevaluaciones completas.
+- **FS**: Algunos ejercicios de las autoevaluaciones. He perdido las autoevaluaciones completas. Profesor Miguel Vega López.
 
-- **LMD**: Algunos apuntes y ejercicios de Maxima y Prolog del profesor Álvaro Martínez Sevilla
+- **LMD**: Algunos apuntes y ejercicios de Maxima y Prolog. Profesor Álvaro Martínez Sevilla.
 
 - **MP**: Ejercicios que me daba tiempo a hacer en clase y la práctica final de la asignatura. Profesor Manuel Lozano Márquez.
 
-- **TOC**: Circuitos hechos en LogicWorks del profesor Eduardo Ros Vidal
+- **TOC**: Circuitos hechos en LogicWorks. Profesor Eduardo Ros Vidal
