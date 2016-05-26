@@ -1,0 +1,11 @@
+#!/bin/bash
+tiempo=1
+
+while :
+do
+	echo $tiempo
+	tiempo=`expr $tiempo + 1`
+	sleep 1s
+done
+
+

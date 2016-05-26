@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+if[ ! -d $1 -o ! -r $1 -o $# -ne 2 ] || (echo $2|grep -iq "[^0-9]");
+then
+	echo "Debes utilizar: Ejercicio61 directorio numero"
+else
+	echo "find $1 -size  -$2c">archivosSizN.txt
+	find $1 -$size -$2c>>archocpsSizN.txt
+fi
+
+
+

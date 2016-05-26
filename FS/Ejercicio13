@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+if [[ $1 == "-h" ]]
+then
+printf "Este guion sirve para ver si el numero de dias que quedan del año son multiplo de cinco."
+fi
+
+anio=(365);
+dias=`date +%j`;
+restante=`expr $anio - $dias`;
+
+if  $restante % 5 == 0; 
+then
+printf "Los dias que quedan de año son multiplo de cinco";
+else
+printf "Los dias que quedan de año no son multiplo de cinco";
+fi

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+if [ $# -eq 3 && $2 -gt 1 && $2 -lt 99 ]
+then
+	mkdir $1
+	chmod u+rw $1
+	for ((CONT=1; CONT<$2; CONT++)) ;
+	do
+	touch $3CONT
+	done
+
+else
+	echo "Uso: Nombre_directorio Numero_archivos Nombre_base."
+fi

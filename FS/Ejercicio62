@@ -1,0 +1,17 @@
+#!/bin/bash
+
+directorio=$1
+
+for archivo in $(ls $directorio)
+do
+	if(test -d $archivo)
+	then	
+		printf "$archivo Directorio\n"
+	elif(test -h $archivo)
+	then	
+		printf "$archivo Enlace\n"
+	elif(test -f $archivo)
+	then
+		printf "$archivo Archivo Regular\n"
+	fi
+done

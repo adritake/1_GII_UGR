@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+sigue=true
+
+while $sigue
+do
+	read $numero
+	if(test $numero -lt 1 && test $numero -gt 10)
+	then
+		sigue=true
+	else
+		sigue=false
+	fi
+
+
+done

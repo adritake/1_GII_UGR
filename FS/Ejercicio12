@@ -1,0 +1,21 @@
+#!/bin/bash
+#Titulo: Ejercicio12
+#Descripcion: Muestra si un archivo es propiedad del usuario y si se tiene permiso de lectura.
+
+if
+	test -O $1;
+then
+	printf "Es propiedad del usuario.";
+else
+	printf "\nNo es propiedad del usuario.";
+fi
+
+
+if
+	test -r $1;
+then
+	printf "\nSe tiene permiso de lectura.";
+else
+	printf "\nNo se tiene permiso de lectura.";
+fi
+

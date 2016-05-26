@@ -1,0 +1,15 @@
+#!/bin/bash
+# Titulo: ejer59
+# Descripcion: Muestra si un archivo es plano y es un enlace simbolico
+
+
+
+printf "Si sale 1, $1 es plano\n"
+plano=  test -f $1; echo $(($?)) && test -x $1; echo $(($?)) 
+
+
+printf "Si sale 1, $1 es un enlace simbolico\n"
+enlace= test -L $1; echo $(($?))
+
+
+
